@@ -14,14 +14,21 @@ public class Main {
         SellerDao sellerDao = DaoFactory.createSellerDao();
         Department department = new Department(2, null);
 
-        System.out.println("==== FindById Test ====");
+        System.out.println("==== Insert Test ====");
         Seller newSeller = new Seller(null, "greg", "greg@gmail.com,", new Date(), 4000.0, department);
         sellerDao.insert(newSeller);
         System.out.println("Done! New Id = " + newSeller.getId());
 
         System.out.println();
+        System.out.println("==== Update Test ====");
+        Seller seller = sellerDao.findById(1);
+        seller.setName("Gustavo de Almeida");
+        sellerDao.update(seller);
+        System.out.println("Update Completed!");
+
+        System.out.println();
         System.out.println("==== FindById Test ====");
-        Seller seller = sellerDao.findById(3);
+        seller = sellerDao.findById(3);
         System.out.println(seller);
 
         System.out.println();
